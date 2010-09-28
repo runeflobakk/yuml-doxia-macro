@@ -27,10 +27,16 @@ Now, in your APT sources you can invoke the macro by using @%{yuml|model=...}@. 
 
 !http://yuml.me/diagram/scruffy/class/%5Byuml-doxia-macro%5Dspeaks%20with-%3E%5Byuml.me%5D!
 
-use @%{yuml|model=[yuml-doxia-macro]speaks with->[yuml.me]}@ in an APT document. For the full diagram syntax accepted by yuml.me, and hence the yuml-doxia-macro, see "http://yuml.me/diagram/scruffy/class/draw":http://yuml.me/diagram/scruffy/class/draw. The macro is set to create class diagrams by default, but can also be set to create activity or use case diagrams by using the @type@ parameter, e.g. @%{yuml|type=activity|model=...}@ or @%{yuml|type=usecase|model=...}@.
+use @%{yuml|model=[yuml-doxia-macro]speaks with->[yuml.me]}@ in an APT document. For the full diagram syntax accepted by yuml.me, and hence the yuml-doxia-macro, see "http://yuml.me/diagram/scruffy/class/draw":http://yuml.me/diagram/scruffy/class/draw. The macro is set to create class diagrams by default, but can also be set to create activity or use case digrams by using the @type@ parameter, e.g. @%{yuml|type=activity|model=...}@ or @%{yuml|type=usecase|model=...}@.
 
 
 
 h2. License
 
 This project is licensed under "LGPL":http://www.gnu.org/licenses/lgpl.html.
+
+
+h2. Acknowledgments
+
+All diagrams output by the macro and included in this document are drawn using "http://yuml.me":http://yuml.me, by "Engineroom":http://engineroomapps.com. It is a free service, but it is also possible to buy personal and/or business licenses.
+
