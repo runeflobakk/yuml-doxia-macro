@@ -1,4 +1,4 @@
-package no.rune.doxia.macro.yuml;
+package org.flobakk.doxia.macro.yuml;
 
 import static org.apache.commons.lang.StringUtils.defaultString;
 
