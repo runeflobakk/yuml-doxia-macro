@@ -2,9 +2,35 @@ h1. Doxia macro for yuml.me
 
 *Include UML diagrams in your Maven site*
 
-This macro for Doxia provides an easy way to include UML diagrams in your project documentation. The
-macro uses the "yuml.me":http://yuml.me site to generate the diagrams, and makes it possible to describe
-the models in yuml.me's textual syntax directly in, for instance,
-"APT":http://maven.apache.org/doxia/references/apt-format.html documents.
+This macro for Doxia provides an easy way to include UML diagrams in your project documentation. The macro uses the "yuml.me":http://yuml.me site to generate the diagrams, and makes it possible to describe the models in yuml.me's textual syntax directly in, for instance, "APT":http://maven.apache.org/doxia/references/apt-format.html documents.
+
+
+h2. Howto
+
+Depend on the macro in your project's maven-site-plugin configuration:
+
+pre. <plugin>
+    <artifactId>maven-site-plugin</artifactId>
+    <version>2.1</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.flobakk.doxia</groupId>
+            <artifactId>yuml-doxia-macro</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+</plugin>
+
+(The macro is not yet available in a repository, so you need to download the source, and @mvn install@ it to your local repository, or even deploy to your private repository, first.)
+
+Now, in your APT sources you can invoke the macro by using @%{yuml|model=...}@. E.g. to make this model:
+
+!http://yuml.me/diagram/scruffy/class/%5Byuml-doxia-macro%5Dspeaks%20with-%3E%5Byuml.me%5D!
+
+use @%{yuml|model=[yuml-doxia-macro]speaks with->[yuml.me]}@ in an APT document. For the full diagram syntax accepted by yuml.me, and hence the yuml-doxia-macro, see "http://yuml.me/diagram/scruffy/class/draw":http://yuml.me/diagram/scruffy/class/draw. The macro is set to create class diagrams by default, but can also be set to create activity or use case diagrams by using the @type@ parameter, e.g. @%{yuml|type=activity|model=...}@ or @%{yuml|type=usecase|model=...}@.
+
+
+
+h2. License
 
 This project is licensed under "LGPL":http://www.gnu.org/licenses/lgpl.html.
