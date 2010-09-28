@@ -1,0 +1,10 @@
+h1. Doxia macro for yuml.me
+
+*Include UML diagrams in your Maven site*
+
+This macro for Doxia provides an easy way to include UML diagrams in your project documentation. The
+macro uses the "yuml.me":http://yuml.me site to generate the diagrams, and makes it possible to describe
+the models in yuml.me's textual syntax directly in, for instance,
+"APT":http://maven.apache.org/doxia/references/apt-format.html documents.
+
+This project is licensed under "LGPL":http://www.gnu.org/licenses/lgpl.html.

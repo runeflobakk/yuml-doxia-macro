@@ -1,0 +1,17 @@
+                 ------------------------
+                   yuml.me Doxia macro
+                 ------------------------
+                      Rune Flobakk
+                 ------------------------
+                 ------------------------
+                 
+yuml.me Doxia macro
+
+	This is a test of the <<<yuml>>> macro.
+	
+	The model shows a parser implementation for a message format. The <<<MessageParser>>> parses and produces a <<<MessageTree>>>,
+	which is the message represented as an abstract syntax tree. <<<MessageTree>>> is <<<Queryable>>>, meaning it is possible to
+	query it for information, which is what a <<<MessagePopulator>>> does to populate a relevant message domain object.
+	
+%{yuml|model=[note:abstract syntax tree]-[MessageTree],[MessageParser]produces->[MessageTree],[MessageTree]-.-^[Queryable],[Queryable]<-queries[MessagePopulator]}
+	
