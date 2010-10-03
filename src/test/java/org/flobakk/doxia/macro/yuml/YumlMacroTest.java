@@ -1,7 +1,7 @@
 package org.flobakk.doxia.macro.yuml;
 
 import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.matches;
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.verify;
 
 import java.io.File;
@@ -21,8 +21,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class YumlMacroTest {
 
-    private static final String BASE_URL = "http://yuml.me/diagram/";
-
     @Mock private Sink sink;
 
     private MacroRequest request;
@@ -41,18 +39,10 @@ public class YumlMacroTest {
     }
 
     @Test
-    public void shouldConstructAScruffyClassDiagramWhenOnlySpecifyingModel() throws MacroExecutionException {
+    public void shouldCallFigureGraphics() throws MacroExecutionException {
         parameters.put("model", "[SomeClass]");
         new YumlMacro().execute(sink, request);
-        verify(sink).figureGraphics(matches(BASE_URL + "scruffy.*/class/.+"), any(SinkEventAttributes.class));
+        verify(sink).figureGraphics(anyString(), any(SinkEventAttributes.class));
     }
 
-    @Test
-    public void shouldPutDiagramTypeIntoRequestUrl() throws MacroExecutionException {
-        parameters.put("model", "[SomeClass]");
-        parameters.put("type", "activity");
-        new YumlMacro().execute(sink, request);
-        verify(sink).figureGraphics(matches(BASE_URL + "scruffy.*/activity/.+"), any(SinkEventAttributes.class));
-
-    }
 }
