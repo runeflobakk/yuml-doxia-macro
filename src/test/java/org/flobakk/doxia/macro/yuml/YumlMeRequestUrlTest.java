@@ -4,7 +4,6 @@ import static org.junit.Assert.assertThat;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.maven.doxia.macro.MacroExecutionException;
 import org.hamcrest.Matcher;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +25,7 @@ public class YumlMeRequestUrlTest {
     }
 
     @Test(expected=IllegalArgumentException.class)
-    public void modelParameterIsRequired() throws MacroExecutionException {
+    public void modelParameterIsRequired() {
         requestUrl.buildFrom(parameters);
     }
 
@@ -37,7 +36,7 @@ public class YumlMeRequestUrlTest {
     }
 
     @Test
-    public void shouldPutDiagramTypeIntoRequestUrl() throws MacroExecutionException {
+    public void shouldPutDiagramTypeIntoRequestUrl() {
         parameters.put("model", "[SomeClass]");
         parameters.put("type", "activity");
         assertThat(requestUrl.buildFrom(parameters), matches(BASE_URL + "scruffy.*/activity/\\[SomeClass\\]"));
