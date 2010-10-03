@@ -1,6 +1,7 @@
 package org.flobakk.doxia.macro.yuml;
 
 import static org.junit.Assert.assertThat;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +19,7 @@ public class YumlMeRequestUrlTest {
 
     private YumlMeRequestUrl requestUrl;
 
+
     @Before
     public void setupParameters() {
         parameters = new HashMap<String, String>();
@@ -32,14 +34,28 @@ public class YumlMeRequestUrlTest {
     @Test
     public void shouldConstructAScruffyClassDiagramUrlWhenOnlySpecifyingModel() {
         parameters.put("model", "[SomeClass]");
-        assertThat(requestUrl.buildFrom(parameters), matches(BASE_URL + "scruffy/class/\\[SomeClass\\]"));
+        assertYumlMeUrlMatches(BASE_URL + "scruffy.*/class/\\[SomeClass\\]");
     }
 
     @Test
     public void shouldPutDiagramTypeIntoRequestUrl() {
-        parameters.put("model", "[SomeClass]");
+        parameters.put("model", "(start)->(Show Dashboard)->(end)");
         parameters.put("type", "activity");
-        assertThat(requestUrl.buildFrom(parameters), matches(BASE_URL + "scruffy.*/activity/\\[SomeClass\\]"));
+        assertYumlMeUrlMatches(BASE_URL + "scruffy.*/activity/\\(start\\)->\\(Show Dashboard\\)->\\(end\\)");
+    }
+
+    @Test
+    public void shouldHandleStyleAndSizeAndDirection() {
+        parameters.put("model", "[SomeClass]");
+        parameters.put("style", "plain");
+        parameters.put("scale", "75");
+        parameters.put("direction", "td");
+        assertYumlMeUrlMatches(BASE_URL + "plain;scale:75;dir:td/class/\\[SomeClass\\]");
+    }
+
+
+    private void assertYumlMeUrlMatches(String expectedRegex) {
+        assertThat(requestUrl.buildFrom(parameters), matches(expectedRegex));
     }
 
 

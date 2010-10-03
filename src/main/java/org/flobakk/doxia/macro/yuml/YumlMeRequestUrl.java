@@ -29,9 +29,9 @@ public class YumlMeRequestUrl {
         }
         params.putIfAbsent("type", "class");
         params.putIfAbsent("style", "scruffy");
-        params.putIfAbsent("size", "100");
+        params.putIfAbsent("scale", "100");
         params.putIfAbsent("direction", "lr");
 
-        return baseUrl + replace("${style}/${type}/${model}", params);
+        return baseUrl + replace("${style};scale:${scale};dir:${direction}/${type}/${model}", params);
     }
 }
