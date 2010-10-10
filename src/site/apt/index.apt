@@ -1,17 +1,24 @@
                  ------------------------
-                   yuml.me Doxia macro
+                   yUML Doxia Macro
                  ------------------------
                       Rune Flobakk
                  ------------------------
                  ------------------------
                  
-yuml.me Doxia macro
 
-	This is a test of the <<<yuml>>> macro.
-	
-	The model shows a parser implementation for a message format. The <<<MessageParser>>> parses and produces a <<<MessageTree>>>,
-	which is the message represented as an abstract syntax tree. <<<MessageTree>>> is <<<Queryable>>>, meaning it is possible to
-	query it for information, which is what a <<<MessagePopulator>>> does to populate a relevant message domain object.
-	
-%{yuml|model=[note:abstract syntax tree]-[MessageTree],[MessageParser]produces->[MessageTree],[MessageTree]-.-^[Queryable],[Queryable]<-queries[MessagePopulator]}
-	
+yUML Doxia Macro
+
+  <<Include UML diagrams in your Maven site>>
+
+  This macro for Doxia provides an easy way to include UML diagrams in your project documentation.
+  The macro uses the {{{http://yuml.me}yuml.me}} site to generate the diagrams, and makes it possible
+  to describe the models in yuml.me's textual syntax directly in, for instance,
+  {{{http://maven.apache.org/doxia/references/apt-format.html}APT}} documents.
+  
+
+
+Acknowledgments
+
+  All diagrams output by the macro and included in this document are drawn using {{http://yuml.me}},
+  by {{{http://engineroomapps.com}Engineroom}}. yUML is a free service, but it is also possible to buy
+  personal and/or business licenses.
