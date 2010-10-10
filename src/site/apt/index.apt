@@ -15,7 +15,7 @@ yUML Doxia Macro
   to describe the models in yuml.me's textual syntax directly in, for instance,
   {{{http://maven.apache.org/doxia/references/apt-format.html}APT}} documents.
   
-
+  This project's source code is on {{{http://github.com/runeflobakk/yuml-doxia-macro}GitHub}}.
 
 Acknowledgments
 
