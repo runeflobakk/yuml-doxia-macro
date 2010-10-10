@@ -1,0 +1,37 @@
+                 ------------------------
+                        Howto
+                 ------------------------
+                      Rune Flobakk
+                 ------------------------
+                 ------------------------
+                 
+                 
+Howto
+
+* Configure dependency
+  
+  Depend on the macro in your project's
+  {{{http://maven.apache.org/plugins/maven-site-plugin/}maven-site-plugin}}
+  configuration like this:
+  
+%{snippet|id=site-config|file=pom.xml}
+
+  (The macro is not yet available in a repository, so you need to download the source,
+  and <<<mvn install>>> it to your local repository, or even deploy to your private
+  repository, first.)
+  
+  
+  
+* Write diagrams
+
+  Now, in your APT sources you can invoke the macro by using <<<%\{yuml|model=...\}>>>.
+  E.g. to make this model:
+
+%{yuml|model=[yuml-doxia-macro]speaks with->[yuml.me]}
+
+  use <<<%\{yuml|model=\[yuml-doxia-macro\]speaks with-\>\[yuml.me\]\}>>> in an APT document.
+  For the full diagram syntax accepted by yUML.me, and hence the yuml-doxia-macro, see
+  {{http://yuml.me/diagram/scruffy/class/draw}}. The macro is set to create class
+  diagrams by default, but can also be set to create activity or use case digrams by
+  using the <<<type>>> parameter, e.g. <<<%\{yuml|type=activity|model=...\}>>> or
+  <<<%\{yuml|type=usecase|model=...\}>>>.
