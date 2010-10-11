@@ -22,7 +22,7 @@ Howto
   
   
   
-* Write diagrams
+* Write UML models
 
   Now, in your APT sources you can invoke the macro by using <<<%\{yuml|model=...\}>>>.
   E.g. to make this model:
