@@ -8,30 +8,34 @@ import java.util.concurrent.ConcurrentMap;
 
 
 public class YumlMeRequestUrl {
+
     private final String baseUrl;
+
 
     public YumlMeRequestUrl(String baseUrl) {
         this.baseUrl = baseUrl;
     }
 
-    public String[] getRequiredParameters() {
-        return new String[] {"model"};
+
+    public String buildFrom(Map<String, String> inputParameters) throws IllegalArgumentException {
+        requireIn(inputParameters, "model");
+        ConcurrentMap<String, String> completeParameters = populateDefaults(new ConcurrentHashMap<String, String>(inputParameters));
+        return baseUrl + replace("${style};scale:${scale};dir:${direction}/${type}/${model}", completeParameters);
     }
 
-    public String buildFrom(Map<String, String> parameters) throws IllegalArgumentException {
-        ConcurrentMap<String, String> params =
-            new ConcurrentHashMap<String, String>(parameters);
 
-        for (String param : getRequiredParameters()) {
-            if (!params.containsKey(param)) {
-                throw new IllegalArgumentException("Parameter " + param + " is required!");
-            }
+    private <M extends ConcurrentMap<String, String>> M populateDefaults(final M parameters) {
+        parameters.putIfAbsent("type", "class");
+        parameters.putIfAbsent("style", "scruffy");
+        parameters.putIfAbsent("scale", "100");
+        parameters.putIfAbsent("direction", "lr");
+        return parameters;
+    }
+
+
+    private static void requireIn(Map<String, String> parameters, String key) {
+        if (!parameters.containsKey(key)) {
+            throw new IllegalArgumentException("Parameter '" + key + "' is required!");
         }
-        params.putIfAbsent("type", "class");
-        params.putIfAbsent("style", "scruffy");
-        params.putIfAbsent("scale", "100");
-        params.putIfAbsent("direction", "lr");
-
-        return baseUrl + replace("${style};scale:${scale};dir:${direction}/${type}/${model}", params);
     }
 }
